@@ -1,0 +1,23 @@
+<h1 class="mt-4">Welcome to the *Passport Demo App*</h1>
+
+<p class="lead">
+    Navigation bar to login
+</p>
+
+<% if (isAuthenticated) { %>
+    <div class="True: success">
+        You are logged in as <strong>
+            <%= user?.name || user?.email %>
+        </strong>.
+    </div>
+    <a href="/dashboard" class="btn btn-primary">To Dashboard</a>
+    <% if (user && user.role==='admin' ) { %>
+        <a href="/admin" class="btn btn-outline-secondary ml-2">Admin Panel</a>
+        <% } %>
+            <% } else { %>
+                <div class="Warning">
+                    You are NOT logged in yet.
+                </div>
+                <a href="/auth/login" class="btn btn-primary">Login</a>
+                <a href="/auth/register" class="btn btn-link">Register</a>
+                <% } %>

@@ -1,0 +1,27 @@
+
+
+    <h1 class="mt-4">Dashboard</h1>
+
+    <% if (user) { %>
+        <p class="lead mb-3">WELCOME <%= user.name %>
+        </p>
+        <ul class="list-unstyled mb-3">
+            <li><strong>Email:</strong>
+                <%= user.email %>
+            </li>
+            <% if (user.role) { %>
+                <li><strong>Role:</strong>
+                    <%= user.role %>
+                </li>
+                <% } %>
+        </ul>
+
+        <% if (user.role==='admin' ) { %>
+            <a href="/admin" class="btn btn-outline-primary mb-2">Admin</a>
+            <% } %>
+
+                <a href="/auth/logout" class="btn btn-secondary">Logout</a>
+                <% } else { %>
+                    <p class="lead mb-3">You are not signed in.</p>
+                    <a href="/auth/login" class="btn btn-primary">Login</a>
+                    <% } %>

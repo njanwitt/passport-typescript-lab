@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>
+    <%= title || "NodeJS Auth App" %>
+  </title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-light bg-light mb-4">
+    <a class="navbar-brand" href="/">Authentication</a>
+    <ul class="navbar-nav ml-auto">
+      <% if (isAuthenticated) { %>
+        <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="/auth/logout">Logout</a></li>
+        <% } else { %>
+          <li class="nav-item"><a class="nav-link" href="/auth/login">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="/auth/register">Register</a></li>
+          <% } %>
+    </ul>
+  </nav>
+
+  <div class="container mt-3">
+    <% if (typeof error !=='undefined' && error.length> 0) { %>
+      <div class="Error" role="alert">
+        <%= error[0] %>
+      </div>
+      <% } %>
+
+        <% if (typeof success !=='undefined' && success.length> 0) { %>
+          <div class="True: success" role="alert">
+            <%= success[0] %>
+          </div>
+          <% } %>
+
+            <%- body %>
+  </div>
+
+</body>
+
+</html>
